@@ -1,70 +1,67 @@
-import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
-import { LogoBadge } from './LogoBadge'
-import { Button } from './ui/Button'
-import { Container } from './ui/Container'
-import { cn } from './ui/cn'
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { LogoBadge } from "./LogoBadge";
+import { Button } from "./ui/Button";
+import { Container } from "./ui/Container";
+import { cn } from "./ui/cn";
 
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'Plans', href: '#plans' },
-  { label: 'Providers', href: '#providers' },
-  { label: 'Resources', href: '#resources' },
-  { label: 'Contact', href: '#contact' }
-]
+  { label: "Home", href: "#home" },
+  { label: "Plans", href: "#plans" },
+  { label: "Providers", href: "#providers" },
+  { label: "Resources", href: "#resources" },
+  { label: "Contact", href: "#contact" },
+];
 
 function scrollToContact() {
-  const el = document.getElementById('contact')
+  const el = document.getElementById("contact");
   if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
 
 export function Navbar() {
-  const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   // Track scroll position for navbar shadow/blur effect
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false)
-    }
-    window.addEventListener('keydown', onKeyDown)
-    return () => window.removeEventListener('keydown', onKeyDown)
-  }, [])
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
-      document.body.style.overflow = ''
-    }
-  }, [open])
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <motion.header
       className={cn(
-        'sticky top-0 z-50 border-b transition-all duration-300',
+        "sticky top-0 z-50 border-b transition-all duration-300",
         scrolled
-          ? 'border-slate-200/80 bg-white/95 shadow-md backdrop-blur-md'
-          : 'border-slate-200/40 bg-white/80 backdrop-blur'
+          ? "border-slate-200/80 bg-white/95 shadow-md backdrop-blur-md"
+          : "border-slate-200/40 bg-white/80 backdrop-blur",
       )}
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <Container className="flex h-16 items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-3 group">
+        <a href="#home" className="flex items-center group w-48 shrink-0">
           <LogoBadge size="sm" />
-          <span className="text-sm font-extrabold tracking-tight text-brand-900 md:text-base group-hover:opacity-80 transition-opacity">
-            Medicare Pathways
-          </span>
         </a>
 
         {/* Desktop nav */}
@@ -118,15 +115,12 @@ export function Navbar() {
               initial={{ x: 24, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 24, opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 260, damping: 26 }}
+              transition={{ type: "spring", stiffness: 260, damping: 26 }}
             >
               <div className="flex h-16 items-center justify-between px-4">
-                <div className="flex items-center gap-3">
+                <a href="#home" className="flex items-center group w-40 shrink-0" onClick={() => setOpen(false)}>
                   <LogoBadge size="sm" />
-                  <span className="text-sm font-extrabold tracking-tight text-brand-900">
-                    Medicare Pathways
-                  </span>
-                </div>
+                </a>
                 <button
                   type="button"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-xl ring-1 ring-slate-200 transition hover:bg-surface-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
@@ -152,8 +146,8 @@ export function Navbar() {
                       href={item.href}
                       onClick={() => setOpen(false)}
                       className={cn(
-                        'block rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 transition',
-                        'hover:bg-surface-100'
+                        "block rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 transition",
+                        "hover:bg-surface-100",
                       )}
                     >
                       {item.label}
@@ -164,8 +158,8 @@ export function Navbar() {
                   <Button
                     className="w-full"
                     onClick={() => {
-                      setOpen(false)
-                      setTimeout(scrollToContact, 300)
+                      setOpen(false);
+                      setTimeout(scrollToContact, 300);
                     }}
                   >
                     Get Started
@@ -177,5 +171,5 @@ export function Navbar() {
         )}
       </AnimatePresence>
     </motion.header>
-  )
+  );
 }

@@ -1,23 +1,16 @@
-import logoImg from '../assets/logo.jpeg'
+import logoImg from '../assets/logo.png'
 import { cn } from './ui/cn'
 
 export function LogoBadge({
-  className,
-  size = 'md'
+  className
 }: {
   className?: string
   size?: 'sm' | 'md'
 }) {
-  const sizes =
-    size === 'sm'
-      ? 'h-10'
-      : 'h-12'
-
   return (
     <span
       className={cn(
-        'inline-flex flex-shrink-0 items-center justify-center',
-        sizes,
+        'relative flex items-center justify-start w-full h-12',
         className
       )}
       aria-hidden="true"
@@ -25,7 +18,7 @@ export function LogoBadge({
       <img
         src={logoImg}
         alt="Medicare Pathways Logo"
-        className="h-full w-auto object-contain scale-[1.35] origin-center"
+        className="absolute left-[-10px] w-[150px] max-w-none object-contain h-auto scale-[1.15]"
         loading="eager"
       />
     </span>

@@ -64,9 +64,6 @@ export function Footer() {
             <div>
               <div className="flex items-center gap-3">
                 <LogoBadge size="sm" />
-                <div className="text-base font-extrabold tracking-tight text-brand-900">
-                  Medicare Pathways
-                </div>
               </div>
               <p className="mt-4 max-w-[240px] text-sm leading-relaxed text-slate-700">
                 A modern, trust-first experience for exploring Medicare options with clarity and
@@ -98,9 +95,10 @@ export function Footer() {
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none">
                     <path d="M10 9l6 3-6 3V9Z" fill="currentColor" />
                     <path
-                      d="M3 12c0-3.5.4-5.4 1.4-6.4S7.5 4 12 4s6.6.6 7.6 1.6S21 8.5 21 12s-.4 5.4-1.4 6.4S16.5 20 12 20s-6.6-.6-7.6-1.6S3 15.5 3 12Z"
+                      d="M21 12A9 9 0 1 1 3 12a9 9 0 0 1 18 0Z"
                       stroke="currentColor"
                       strokeWidth="2"
+                      strokeLinecap="round"
                       strokeLinejoin="round"
                     />
                   </svg>
@@ -134,27 +132,31 @@ export function Footer() {
               </div>
             ))}
 
-            {/* Contact card */}
-            <div className="w-full min-w-[240px] rounded-3xl bg-surface-50 p-5 ring-1 ring-slate-200/70">
-              <div className="text-xs font-semibold text-slate-500">Call us</div>
-              <a
-                href="tel:+18005550199"
-                className="mt-1 inline-flex text-base font-extrabold tabular-nums tracking-tight text-slate-900 underline-offset-4 hover:text-brand-900 hover:underline"
-              >
-                <span className="whitespace-nowrap">(800) 555-0199</span>
-              </a>
-              <div className="mt-3 text-xs font-semibold text-slate-500">Hours</div>
-              <div className="mt-1 text-sm font-semibold text-slate-700">
-                <span className="whitespace-nowrap">Mon–Fri</span>
-                <span className="mx-1 text-slate-300">•</span>
-                <span className="whitespace-nowrap">9am–6pm</span>
-              </div>
-              <div className="mt-4 rounded-2xl bg-white p-3 ring-1 ring-slate-200/70">
-                <div className="text-xs font-semibold text-slate-700">Need help fast?</div>
-                <div className="mt-1 text-xs text-slate-600">
-                  Ask about plans, providers, and enrollment steps.
-                </div>
-              </div>
+            {/* Contact column (made consistent with others) */}
+            <div>
+              <div className="text-sm font-extrabold text-slate-900">Contact Us</div>
+              <ul className="mt-4 space-y-5 text-sm">
+                <li>
+                  <div className="font-semibold text-slate-500 text-xs mb-1">Call us</div>
+                  <a href="tel:+15733700030" className="block font-semibold text-slate-700 transition hover:text-brand-900">
+                    +1 (573) 370 0030
+                  </a>
+                </li>
+                <li>
+                  <div className="font-semibold text-slate-500 text-xs mb-1">Email us</div>
+                  <a href="mailto:info@medicarepathways.shop" className="block font-semibold text-slate-700 transition hover:text-brand-900">
+                    info@medicarepathways.shop
+                  </a>
+                </li>
+                <li>
+                  <div className="font-semibold text-slate-500 text-xs mb-1">Address</div>
+                  <div className="font-semibold text-slate-700">14 Hartland Ave,<br />Huntington Station, NY</div>
+                </li>
+                <li>
+                  <div className="font-semibold text-slate-500 text-xs mb-1">Hours</div>
+                  <div className="font-semibold text-slate-700">Mon–Fri • 9am–6pm</div>
+                </li>
+              </ul>
             </div>
 
           </div>

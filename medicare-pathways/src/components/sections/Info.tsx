@@ -83,7 +83,7 @@ export function Info() {
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.25 }}
+              viewport={{ once: false, amount: 0.25 }}
               transition={{ duration: 0.55, ease: 'easeOut' }}
             >
               <div>

@@ -95,7 +95,7 @@ export function Features() {
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{ once: false, amount: 0.25 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
           <h2 className="text-balance text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
@@ -113,7 +113,7 @@ export function Features() {
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.25 }}
+              viewport={{ once: false, amount: 0.25 }}
               transition={{ duration: 0.45, delay: idx * 0.05, ease: 'easeOut' }}
               whileHover={{ y: -4, scale: 1.03 }}
             >
