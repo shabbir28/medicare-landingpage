@@ -6,15 +6,30 @@ import { LogoBadge } from '../LogoBadge'
 const columns = [
   {
     title: 'Product',
-    links: ['Plans', 'Providers', 'Resources', 'Get Started']
+    links: [
+      { label: 'Plans', href: '#plans' },
+      { label: 'Providers', href: '#providers' },
+      { label: 'Resources', href: '#resources' },
+      { label: 'Get Started', href: '#contact' }
+    ]
   },
   {
     title: 'Company',
-    links: ['About', 'Careers', 'Press', 'Contact']
+    links: [
+      { label: 'About', href: '#' },
+      { label: 'Careers', href: '#' },
+      { label: 'Press', href: '#' },
+      { label: 'Contact', href: '#contact' }
+    ]
   },
   {
     title: 'Support',
-    links: ['Help Center', 'Enrollment Checklist', 'Privacy', 'Terms']
+    links: [
+      { label: 'Help Center', href: '#' },
+      { label: 'Enrollment Checklist', href: '#' },
+      { label: 'Privacy', href: '#' },
+      { label: 'Terms', href: '#' }
+    ]
   }
 ]
 
@@ -99,9 +114,19 @@ export function Footer() {
                 <div className="text-sm font-extrabold text-slate-900">{col.title}</div>
                 <ul className="mt-4 space-y-3 text-sm">
                   {col.links.map((link) => (
-                    <li key={link}>
-                      <a href="#" className="text-slate-700 transition hover:text-brand-900">
-                        {link}
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        className="text-slate-700 transition hover:text-brand-900"
+                        onClick={(e) => {
+                          if (link.href === '#contact') {
+                            e.preventDefault()
+                            const el = document.getElementById('contact')
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                          }
+                        }}
+                      >
+                        {link.label}
                       </a>
                     </li>
                   ))}

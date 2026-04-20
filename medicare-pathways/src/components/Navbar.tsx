@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { LogoBadge } from './LogoBadge'
 import { Button } from './ui/Button'
@@ -13,8 +13,23 @@ const navItems = [
   { label: 'Contact', href: '#contact' }
 ]
 
+function scrollToContact() {
+  const el = document.getElementById('contact')
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
 export function Navbar() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  // Track scroll position for navbar shadow/blur effect
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -32,28 +47,43 @@ export function Navbar() {
   }, [open])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur">
+    <motion.header
+      className={cn(
+        'sticky top-0 z-50 border-b transition-all duration-300',
+        scrolled
+          ? 'border-slate-200/80 bg-white/95 shadow-md backdrop-blur-md'
+          : 'border-slate-200/40 bg-white/80 backdrop-blur'
+      )}
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
       <Container className="flex h-16 items-center justify-between">
-        <a href="#home" className="flex items-center gap-3">
+        {/* Logo */}
+        <a href="#home" className="flex items-center gap-3 group">
           <LogoBadge size="sm" />
-          <span className="text-sm font-extrabold tracking-tight text-brand-900 md:text-base">
+          <span className="text-sm font-extrabold tracking-tight text-brand-900 md:text-base group-hover:opacity-80 transition-opacity">
             Medicare Pathways
           </span>
         </a>
 
+        {/* Desktop nav */}
         <nav className="hidden items-center gap-7 lg:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-semibold text-slate-700 transition hover:text-brand-900"
+              className="relative text-sm font-semibold text-slate-700 transition hover:text-brand-900 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-brand-900 after:transition-all hover:after:w-full"
             >
               {item.label}
             </a>
           ))}
-          <Button size="sm">Get Started</Button>
+          <Button size="sm" onClick={scrollToContact}>
+            Get Started
+          </Button>
         </nav>
 
+        {/* Mobile hamburger */}
         <button
           type="button"
           className="inline-flex h-10 w-10 items-center justify-center rounded-xl ring-1 ring-slate-200 transition hover:bg-surface-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 lg:hidden"
@@ -70,6 +100,7 @@ export function Navbar() {
         </button>
       </Container>
 
+      {/* Mobile drawer */}
       <AnimatePresence>
         {open && (
           <>
@@ -130,7 +161,13 @@ export function Navbar() {
                   ))}
                 </div>
                 <div className="mt-4">
-                  <Button className="w-full" onClick={() => setOpen(false)}>
+                  <Button
+                    className="w-full"
+                    onClick={() => {
+                      setOpen(false)
+                      setTimeout(scrollToContact, 300)
+                    }}
+                  >
                     Get Started
                   </Button>
                 </div>
@@ -139,7 +176,6 @@ export function Navbar() {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   )
 }
-

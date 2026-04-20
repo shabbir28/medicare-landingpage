@@ -10,13 +10,13 @@ export function LogoBadge({
 }) {
   const sizes =
     size === 'sm'
-      ? 'h-9 w-9 rounded-xl'
-      : 'h-10 w-10 rounded-2xl'
+      ? 'h-10'
+      : 'h-12'
 
   return (
     <span
       className={cn(
-        'inline-flex items-center justify-center overflow-hidden bg-white ring-1 ring-slate-200/80 shadow-soft',
+        'inline-flex flex-shrink-0 items-center justify-center',
         sizes,
         className
       )}
@@ -25,10 +25,9 @@ export function LogoBadge({
       <img
         src={logoImg}
         alt="Medicare Pathways Logo"
-        className="h-full w-full object-contain"
+        className="h-full w-auto object-contain scale-[1.35] origin-center"
         loading="eager"
       />
     </span>
   )
 }
-
