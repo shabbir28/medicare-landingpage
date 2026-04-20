@@ -12,7 +12,7 @@ function scrollToContact() {
 
 function HeroArt() {
   return (
-    <div className="relative mx-auto w-full max-w-lg">
+    <div className="relative mx-auto w-full max-w-xl xl:max-w-2xl">
       {/* Decorative blurred background blob */}
       <div className="absolute -inset-10 -z-10 rounded-[3rem] bg-gradient-to-br from-brand-200/40 via-white/10 to-accent-200/40 blur-3xl" />
 
@@ -99,7 +99,7 @@ export function Hero() {
       <div className="absolute right-0 top-0 -z-10 h-[800px] w-[800px] -translate-y-1/3 translate-x-1/3 rounded-full bg-brand-50/60 blur-[120px]" />
       <div className="absolute left-0 top-[20%] -z-10 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-accent-50/60 blur-[100px]" />
 
-      <Container className="relative py-20 md:py-28 lg:py-32">
+      <Container className="relative pb-20 pt-6 md:pb-28 md:pt-10 lg:pb-32 lg:pt-12">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <motion.div
             variants={fadeUp}
