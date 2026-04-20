@@ -1,0 +1,11 @@
+{
+  "name": "meddicare-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix medicare-pathways run dev",
+    "build": "npm --prefix medicare-pathways run build",
+    "preview": "npm --prefix medicare-pathways run preview",
+    "install:app": "npm --prefix medicare-pathways install"
+  }
+}
+

@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* App-wide polish */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-gradient-to-b from-surface-50 via-white to-surface-50 text-slate-900 antialiased;
+}
+
+::selection {
+  background: rgba(201, 162, 39, 0.35);
+}
+
