@@ -1,4 +1,4 @@
-import logoImg from '../assets/logo.png'
+import logoImg from '../assets/5.png'
 import { cn } from './ui/cn'
 
 export function LogoBadge({

@@ -4,7 +4,7 @@ import { fadeUp } from '../motion'
 import { Button } from '../ui/Button'
 import { Card } from '../ui/Card'
 import { Container } from '../ui/Container'
-import contactImg from '../../assets/Post 2.jpg'
+import contactImg from '../../assets/Medicare 30.jpg.jpeg'
 import type { ReactNode } from 'react'
 
 function Field({
@@ -45,12 +45,18 @@ export function Contact() {
     setStatus('loading')
 
     try {
+      // Prevent Google Sheets from treating phone numbers starting with '+' as formulas
+      const submissionData = {
+        ...formData,
+        phone: formData.phone.startsWith('+') ? `'${formData.phone}` : formData.phone
+      }
+
       await fetch(
         'https://script.google.com/macros/s/AKfycbw1NTace8YXEVPKj07Gvcmq6IHKES0QZgX7g0JHJwj41Hx5eoZ3RoZjNXQoGSjtpYS6fA/exec',
         {
           method: 'POST',
           mode: 'no-cors',
-          body: JSON.stringify(formData)
+          body: JSON.stringify(submissionData)
         }
       )
 
@@ -119,11 +125,11 @@ export function Contact() {
                     We keep it simple: clear next steps and answers you can trust.
                   </div>
                   <div className="mt-4 flex flex-col gap-2 relative z-10">
-                    <a href="mailto:info@medicarepathways.shop" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-300 transition hover:text-white group">
+                    <a href="mailto:info@easymedicareplanz.com" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-300 transition hover:text-white group">
                       <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
-                      info@medicarepathways.shop
+                      info@easymedicareplanz.com
                     </a>
                     <div className="inline-flex items-start gap-2 text-sm font-semibold text-brand-300 hover:text-white transition">
                       <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2">

@@ -144,8 +144,8 @@ export function Footer() {
                 </li>
                 <li>
                   <div className="font-semibold text-slate-500 text-xs mb-1">Email us</div>
-                  <a href="mailto:info@medicarepathways.shop" className="block font-semibold text-slate-700 transition hover:text-brand-900">
-                    info@medicarepathways.shop
+                  <a href="mailto:info@easymedicareplanz.com" className="block font-semibold text-slate-700 transition hover:text-brand-900">
+                    info@easymedicareplanz.com
                   </a>
                 </li>
                 <li>

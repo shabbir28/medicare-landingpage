@@ -4,7 +4,7 @@ import { Card } from '../ui/Card'
 import { Container } from '../ui/Container'
 import { cn } from '../ui/cn'
 import imgA from '../../assets/Layer 17.jpg'
-import imgB from '../../assets/Layer 20.jpg'
+import imgB from '../../assets/Medicare Pathway 30.jpg.jpeg'
 
 type InfoBlock = {
   eyebrow: string
