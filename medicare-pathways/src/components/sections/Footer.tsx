@@ -8,9 +8,9 @@ const columns = [
     title: 'Product',
     links: [
       { label: 'Plans', href: '#plans' },
-      { label: 'Providers', href: '#providers' },
-      { label: 'Resources', href: '#resources' },
-      { label: 'Get Started', href: '#contact' }
+      { label: 'CCPA', href: '#ccpa' },
+      { label: 'DNC Policy', href: '#dnc-policy' },
+      { label: 'Contact', href: '#contact' }
     ]
   },
   {
@@ -28,7 +28,7 @@ const columns = [
       { label: 'Help Center', href: '#' },
       { label: 'Enrollment Checklist', href: '#' },
       { label: 'Privacy', href: '#' },
-      { label: 'Terms', href: '#' }
+      { label: 'Terms and Conditions', href: '#terms-and-conditions' }
     ]
   }
 ]
@@ -168,7 +168,7 @@ export function Footer() {
             </div>
             <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
               <a href="#" className="hover:text-brand-900">Privacy</a>
-              <a href="#" className="hover:text-brand-900">Terms</a>
+              <a href="#terms-and-conditions" className="hover:text-brand-900">Terms and Conditions</a>
             </div>
           </div>
 

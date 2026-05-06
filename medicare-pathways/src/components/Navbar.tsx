@@ -1,24 +1,19 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { LogoBadge } from "./LogoBadge";
-import { Button } from "./ui/Button";
 import { Container } from "./ui/Container";
 import { cn } from "./ui/cn";
 
 const navItems = [
   { label: "Home", href: "#home" },
   { label: "Plans", href: "#plans" },
-  { label: "Providers", href: "#providers" },
-  { label: "Resources", href: "#resources" },
-  { label: "Contact", href: "#contact" },
+  { label: "CCPA", href: "#ccpa" },
+  { label: "DNC Policy", href: "#dnc-policy" },
+  { label: "Check Eligibility", href: "#contact" },
 ];
 
-function scrollToContact() {
-  const el = document.getElementById("contact");
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-}
+const PHONE_DISPLAY = "+1 (573) 370-0030";
+const PHONE_TEL = "+15733700030";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -75,9 +70,14 @@ export function Navbar() {
               {item.label}
             </a>
           ))}
-          <Button size="sm" onClick={scrollToContact}>
-            Get Started
-          </Button>
+          <a
+            href={`tel:${PHONE_TEL}`}
+            className="inline-flex items-center gap-2 rounded-xl bg-brand-900 px-4 py-2 text-sm font-extrabold text-white shadow-soft transition hover:bg-brand-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
+            aria-label={`Call ${PHONE_DISPLAY}`}
+          >
+            <span className="inline-flex h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_0_4px_rgba(16,185,129,0.18)]" />
+            {PHONE_DISPLAY}
+          </a>
         </nav>
 
         {/* Mobile hamburger */}
@@ -155,15 +155,12 @@ export function Navbar() {
                   ))}
                 </div>
                 <div className="mt-4">
-                  <Button
-                    className="w-full"
-                    onClick={() => {
-                      setOpen(false);
-                      setTimeout(scrollToContact, 300);
-                    }}
+                  <a
+                    href={`tel:${PHONE_TEL}`}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-900 px-4 py-3 text-sm font-extrabold text-white shadow-soft transition hover:bg-brand-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
                   >
-                    Get Started
-                  </Button>
+                    Call {PHONE_DISPLAY}
+                  </a>
                 </div>
               </div>
             </motion.aside>

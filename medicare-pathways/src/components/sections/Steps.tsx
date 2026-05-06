@@ -91,7 +91,7 @@ const steps: Step[] = [
 
 export function Steps() {
   return (
-    <section id="providers" className="bg-surface-50 py-14 md:py-18 lg:py-20">
+    <section id="steps" className="bg-surface-50 py-14 md:py-18 lg:py-20">
       <Container>
         <motion.div
           variants={fadeUp}

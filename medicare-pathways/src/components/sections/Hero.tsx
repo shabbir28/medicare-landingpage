@@ -9,6 +9,9 @@ function scrollToContact() {
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
+const PHONE_DISPLAY = '+1 (573) 370-0030'
+const PHONE_TEL = '+15733700030'
+
 export function Hero() {
   const { scrollY } = useScroll()
 
@@ -65,26 +68,36 @@ export function Hero() {
             and confidence.
           </p>
 
-          <div className="mt-10 w-full max-w-lg rounded-2xl bg-white/10 p-2 shadow-2xl shadow-black/20 ring-1 ring-white/20 backdrop-blur-xl sm:rounded-full">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-              <div className="relative flex-1 pl-4">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60">
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                  </svg>
-                </span>
-                <input
-                  inputMode="numeric"
-                  pattern="[0-9]*"
-                  placeholder="Enter ZIP code..."
-                  className="h-14 w-full bg-transparent pl-10 pr-2 text-base font-semibold text-white placeholder:font-medium placeholder:text-white/60 focus:outline-none"
-                />
-              </div>
-              <Button className="h-14 rounded-xl px-8 shadow-md sm:rounded-full bg-blue-600 hover:bg-blue-500 text-white border-0" size="lg" onClick={scrollToContact}>
-                Explore Plans
+          <div className="mt-10 flex w-full flex-col gap-3 sm:flex-row sm:items-center">
+            <a
+              href={`tel:${PHONE_TEL}`}
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-white/10 px-6 text-base font-extrabold text-white shadow-2xl shadow-black/20 ring-1 ring-white/20 backdrop-blur-xl transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 sm:rounded-full"
+              aria-label={`Call ${PHONE_DISPLAY}`}
+            >
+              <span className="inline-flex h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_0_5px_rgba(16,185,129,0.18)]" />
+              {PHONE_DISPLAY}
+            </a>
+
+            <motion.div
+              className="relative"
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 18 }}
+            >
+              <motion.div
+                aria-hidden="true"
+                className="pointer-events-none absolute -inset-1 rounded-3xl bg-gradient-to-r from-blue-400/60 via-white/40 to-blue-300/60 blur-md"
+                animate={{ opacity: [0.45, 0.8, 0.45] }}
+                transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              <Button
+                className="relative h-14 w-full rounded-2xl border-0 bg-blue-600 px-8 text-white shadow-lg shadow-blue-950/30 hover:bg-blue-500 sm:w-auto sm:rounded-full"
+                size="lg"
+                onClick={scrollToContact}
+              >
+                Get Started
               </Button>
-            </div>
+            </motion.div>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-blue-200/80">
