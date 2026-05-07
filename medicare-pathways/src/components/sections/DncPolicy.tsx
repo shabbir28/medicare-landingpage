@@ -1,5 +1,6 @@
 import { Container } from '../ui/Container'
 import { Card } from '../ui/Card'
+import { Link } from 'react-router-dom'
 
 export function DncPolicy() {
   return (
@@ -33,13 +34,13 @@ export function DncPolicy() {
 
               <div className="not-prose mt-6 rounded-2xl bg-surface-50 p-5 ring-1 ring-slate-200/70">
                 <div className="text-xs font-extrabold tracking-wide text-slate-500">PHONE</div>
-                <a
-                  href="tel:+15733700030"
+                <Link
+                  to="/call"
                   className="mt-1 inline-flex items-center gap-2 text-lg font-extrabold text-slate-900 hover:text-brand-900"
                 >
                   +1 (573) 370-0030
                   <span className="text-sm font-semibold text-slate-500">(tap to call)</span>
-                </a>
+                </Link>
               </div>
 
               <h3 className="mt-6 font-extrabold text-slate-900">Processing Timeline</h3>

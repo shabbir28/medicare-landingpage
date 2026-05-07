@@ -1,5 +1,6 @@
 import { Card } from '../ui/Card'
 import { Container } from '../ui/Container'
+import { Link } from 'react-router-dom'
 
 export function TermsAndConditions() {
   return (
@@ -87,12 +88,12 @@ export function TermsAndConditions() {
               <p>For questions regarding these Terms of Use, please contact:</p>
               <div className="not-prose mt-3 rounded-2xl bg-surface-50 p-5 ring-1 ring-slate-200/70">
                 <div className="text-sm font-bold text-slate-900">Easy Medicare Planz</div>
-                <a
-                  href="tel:+15733700030"
+                <Link
+                  to="/call"
                   className="mt-1 inline-flex items-center gap-2 text-base font-extrabold text-slate-900 hover:text-brand-900"
                 >
                   Phone: +1 (573) 370-0030
-                </a>
+                </Link>
               </div>
             </div>
           </Card>

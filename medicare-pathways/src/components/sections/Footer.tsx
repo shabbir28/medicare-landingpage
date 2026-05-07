@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Container } from '../ui/Container'
 import { Card } from '../ui/Card'
 import type { ReactNode } from 'react'
@@ -7,10 +8,10 @@ const columns = [
   {
     title: 'Product',
     links: [
-      { label: 'Plans', href: '#plans' },
-      { label: 'CCPA', href: '#ccpa' },
-      { label: 'DNC Policy', href: '#dnc-policy' },
-      { label: 'Contact', href: '#contact' }
+      { label: 'Plans', href: '/#plans' },
+      { label: 'CCPA', href: '/ccpa' },
+      { label: 'DNC Policy', href: '/dnc-policy' },
+      { label: 'Contact', href: '/contact' }
     ]
   },
   {
@@ -19,7 +20,7 @@ const columns = [
       { label: 'About', href: '#' },
       { label: 'Careers', href: '#' },
       { label: 'Press', href: '#' },
-      { label: 'Contact', href: '#contact' }
+      { label: 'Contact', href: '/contact' }
     ]
   },
   {
@@ -28,7 +29,7 @@ const columns = [
       { label: 'Help Center', href: '#' },
       { label: 'Enrollment Checklist', href: '#' },
       { label: 'Privacy', href: '#' },
-      { label: 'Terms and Conditions', href: '#terms-and-conditions' }
+      { label: 'Terms and Conditions', href: '/terms-and-conditions' }
     ]
   }
 ]
@@ -113,19 +114,21 @@ export function Footer() {
                 <ul className="mt-4 space-y-3 text-sm">
                   {col.links.map((link) => (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
-                        className="text-slate-700 transition hover:text-brand-900"
-                        onClick={(e) => {
-                          if (link.href === '#contact') {
-                            e.preventDefault()
-                            const el = document.getElementById('contact')
-                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                          }
-                        }}
-                      >
-                        {link.label}
-                      </a>
+                      {link.href.startsWith('/') ? (
+                        <Link
+                          to={link.href}
+                          className="text-slate-700 transition hover:text-brand-900"
+                        >
+                          {link.label}
+                        </Link>
+                      ) : (
+                        <a
+                          href={link.href}
+                          className="text-slate-700 transition hover:text-brand-900"
+                        >
+                          {link.label}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -138,9 +141,9 @@ export function Footer() {
               <ul className="mt-4 space-y-5 text-sm">
                 <li>
                   <div className="font-semibold text-slate-500 text-xs mb-1">Call us</div>
-                  <a href="tel:+15733700030" className="block font-semibold text-slate-700 transition hover:text-brand-900">
+                  <Link to="/call" className="block font-semibold text-slate-700 transition hover:text-brand-900">
                     +1 (573) 370 0030
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <div className="font-semibold text-slate-500 text-xs mb-1">Email us</div>
@@ -168,7 +171,7 @@ export function Footer() {
             </div>
             <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end">
               <a href="#" className="hover:text-brand-900">Privacy</a>
-              <a href="#terms-and-conditions" className="hover:text-brand-900">Terms and Conditions</a>
+              <Link to="/terms-and-conditions" className="hover:text-brand-900">Terms and Conditions</Link>
             </div>
           </div>
 

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
@@ -10,7 +11,6 @@ function scrollToContact() {
 }
 
 const PHONE_DISPLAY = '+1 (573) 370-0030'
-const PHONE_TEL = '+15733700030'
 
 export function Hero() {
   const { scrollY } = useScroll()
@@ -58,7 +58,7 @@ export function Hero() {
             Premium Medicare Guidance
           </div>
 
-          <h1 className="mt-8 text-balance text-5xl font-black tracking-tight text-white mb-6 sm:text-6xl lg:text-7xl">
+          <h1 className="mt-8 text-balance text-4xl font-black tracking-tight text-white mb-6 sm:text-5xl lg:text-7xl">
             Find the Right <br className="max-sm:hidden" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-white">Medicare Plan</span>
           </h1>
@@ -69,14 +69,14 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex w-full flex-col gap-3 sm:flex-row sm:items-center">
-            <a
-              href={`tel:${PHONE_TEL}`}
+            <Link
+              to="/call"
               className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-white/10 px-6 text-base font-extrabold text-white shadow-2xl shadow-black/20 ring-1 ring-white/20 backdrop-blur-xl transition hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 sm:rounded-full"
-              aria-label={`Call ${PHONE_DISPLAY}`}
+              aria-label="Go to call page"
             >
               <span className="inline-flex h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_0_5px_rgba(16,185,129,0.18)]" />
               {PHONE_DISPLAY}
-            </a>
+            </Link>
 
             <motion.div
               className="relative"
